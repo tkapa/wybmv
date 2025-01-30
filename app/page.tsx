@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Heart, HeartCrack } from "lucide-react";
+import { Github, Heart, HeartCrack, Rss } from "lucide-react";
 import { useState } from "react";
 
 export default function Home() {
@@ -65,8 +65,18 @@ export default function Home() {
       </main>
       <footer className="row-start-3 flex-col flex gap-6 flex-wrap items-center justify-center">
         <p>Created by Tylah Kapa</p>
-        <a href="https://www.kapa.dev">kapa.dev</a>
-        <a href="https://github.com/tkapa/wybmv">GitHub Repository</a>
+        <div className="flex">
+          <a href="https://www.kapa.dev">        
+            <Button variant="link" size="lg">
+              <Rss />
+            </Button>
+          </a>
+          <a href="https://github.com/tkapa/wybmv">
+            <Button variant="link" size="lg">
+              <Github />
+            </Button>
+          </a>
+        </div>
       </footer>
     </div>
   );
