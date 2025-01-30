@@ -66,6 +66,7 @@ export default function Home() {
       <footer className="row-start-3 flex-col flex gap-6 flex-wrap items-center justify-center">
         <p>Created by Tylah Kapa</p>
         <a href="https://www.kapa.dev">kapa.dev</a>
+        <a href="https://github.com/tkapa/wybmv">GitHub Repository</a>
       </footer>
     </div>
   );
