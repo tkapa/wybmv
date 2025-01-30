@@ -13,9 +13,9 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Go to `app/page.tsx`
-Update text inside any `{{}}` The page auto-updates as you edit the file.
-Host your site using Vercel, or just run the website locally and show it to them!
+Go to `app/page.tsx`  
+Update text inside any `{{}}` The page auto-updates as you edit the file  
+Host your site using Vercel, or just run the website locally and show it to them!  
 
 ## Deploy on Vercel
 
