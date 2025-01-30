@@ -63,7 +63,7 @@ export default function Home() {
           </Button>)
         }
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+      <footer className="row-start-3 flex-col flex gap-6 flex-wrap items-center justify-center">
         <p>Created by Tylah Kapa</p>
         <a href="https://www.kapa.dev">kapa.dev</a>
       </footer>
