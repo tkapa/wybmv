@@ -20,9 +20,36 @@ export default function Home() {
   const onMoveNo = () => {
     setIsYes(false);
     setHideButton(true);
-    const randomX = Math.random() * 80 + 10; // Random position between 10% and 90%
-    const randomY = Math.random() * 80 + 10;
-    setPosition({ top: `${randomY}%`, left: `${randomX}%` });
+
+    const container = document.documentElement;
+    const maxX = container.clientWidth - 100;
+    const maxY = container.clientHeight - 50;
+    const bufferX = maxX * 0.1; // 10% buffer
+    const bufferY = maxY * 0.1;
+    const centerX = maxX / 2;
+    const centerY = maxY / 2;
+    
+    const minDistance = 100;
+    const maxDistance = 300;
+    
+    let deltaX = Math.random() * (maxDistance - minDistance) + minDistance;
+    let deltaY = Math.random() * (maxDistance - minDistance) + minDistance;
+    
+    // Randomize direction
+    deltaX *= Math.random() > 0.5 ? 1 : -1;
+    deltaY *= Math.random() > 0.5 ? 1 : -1;
+    
+    let newX = parseFloat(position.left) * (maxX / 100) + deltaX;
+    let newY = parseFloat(position.top) * (maxY / 100) + deltaY;
+    
+    // Bias movement towards the center
+    newX = (newX + centerX) / 2;
+    newY = (newY + centerY) / 2;
+
+    newX = Math.max(bufferX, Math.min(newX, maxX - bufferX));
+    newY = Math.max(bufferY, Math.min(newY, maxY - bufferY));
+
+    setPosition({ top: `${(newY / maxY) * 100}%`, left: `${(newX / maxX) * 100}%` });
   }
 
   const onYes = () => setIsYes(true);
@@ -47,7 +74,9 @@ export default function Home() {
               <Heart fill="#fff" /> Yes
             </Button>
             {!hideButton && (
-              <Button onClick={onMoveNo} className="w-2/5" variant="outline">
+              <Button onClick={onMoveNo} 
+                onPointerEnter={onMoveNo} 
+                className="w-2/5" variant="outline">
                 <HeartCrack /> No
               </Button>)}
           </CardFooter>
@@ -57,6 +86,7 @@ export default function Home() {
             style={{position: "absolute", top: position.top, left: position.left }}
             hidden={!hideButton} 
             onClick={onMoveNo} 
+            onPointerEnter={onMoveNo} 
             className="w-[150px]" 
             variant="outline">
             <HeartCrack /> No
